@@ -40,6 +40,27 @@ By default, the sitemap takes the whole tree. If you want to restrict this to yo
     parameters:
         ezsettings.mysiteaccess.content.tree_root.location_id: 92
 
+### How to handle multiple sitemaps with different classes?
+
+1. Add parameters to your `default_settings.yml`
+
+        sitemap.classes:
+            - home
+            - blog_post
+            - landing
+
+        google_news_sitemap.classes:
+            -blog_post
+
+2. Create a new route for each sitemap
+
+        sitemap:
+            pattern: /sitemap.xml
+            defaults: { _controller: TuteiSitemapBundle:Default:index, classes_parameter: sitemap.classes }
+        google_news_sitemap:
+            pattern: /sitemap-news.xml
+            defaults: { _controller: TuteiSitemapBundle:Default:index, classes_parameter: google_news_sitemap.classes }
+
 ## How to use
 
 To view your sitemap access: `/sitemap.xml`

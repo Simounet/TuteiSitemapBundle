@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller {
 
-    public function indexAction() {
+    public function indexAction($classes_parameter = 'tutei_sitemap.classes') {
         $response = new Response();
         $response->setPublic();
         $response->setSharedMaxAge( 86400 );
@@ -29,7 +29,7 @@ class DefaultController extends Controller {
             2;
         $rootLocation = $locationService->loadLocation($rootLocationId);
 
-        $classes = $this->container->getParameter('tutei_sitemap.classes');
+        $classes = $this->container->getParameter($classes_parameter);
         $url =  $this->container->getParameter('tutei_sitemap.base_url');
 
         $query = new Query();
