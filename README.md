@@ -31,6 +31,13 @@ Run the following to install the bundle assets:
 Example parameters are in `/src/Tutei/SitemapBundle/Resources/config/services.yml`
 Copy and modify these to your own `services.yml`
 
+### How to target a specific siteaccess content tree?
+
+By default, the sitemap takes the whole tree. If you want to restrict this to your siteaccess content tree, add `content.tree_root.location_id` parameter to your `default_settings.yml`. Example:
+
+    parameters:
+        ezsettings.mysiteaccess.content.tree_root.location_id: 92
+
 # How to use
 
 To view your sitemap access: `/sitemap.xml`
