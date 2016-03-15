@@ -50,7 +50,7 @@ By default, the sitemap takes the whole tree. If you want to restrict this to yo
             - landing
 
         google_news_sitemap.classes:
-            -blog_post
+            - blog_post
 
 2. Create a new route for each sitemap
 
