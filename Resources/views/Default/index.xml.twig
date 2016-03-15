@@ -4,7 +4,7 @@
     {% for result in results %}
 
     <url>
-      <loc>{{ url }}{{ path(result) }}</loc>
+      <loc>{{ url(result) }}</loc>
       <lastmod>{{ result.contentInfo.modificationDate|date('Y-m-d') }}</lastmod>
     </url>
     {%endfor%}

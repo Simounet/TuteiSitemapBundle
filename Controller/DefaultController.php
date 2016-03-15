@@ -30,7 +30,6 @@ class DefaultController extends Controller {
         $rootLocation = $locationService->loadLocation($rootLocationId);
 
         $classes = $this->container->getParameter($classes_parameter);
-        $url =  $this->container->getParameter('tutei_sitemap.base_url');
 
         $query = new Query();
         $query->query = new LogicalAnd(
@@ -53,7 +52,7 @@ class DefaultController extends Controller {
         }
 
         return $this->render('TuteiSitemapBundle:Default:index.xml.twig',
-                array('results' => $results, 'url'=>$url),
+                array('results' => $results),
                 $response);
     }
 
