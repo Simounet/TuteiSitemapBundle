@@ -16,8 +16,9 @@ class DefaultController extends Controller {
         $response->setSharedMaxAge( 86400 );
         $response->headers->set( 'X-Location-Id', 2 );
         $response->headers->set('Content-Type', 'application/xml');
-        $searchService = $this->getRepository()->getSearchService();
-        $locationService = $this->getRepository()->getLocationService();
+        $repository = $this->getRepository();
+        $searchService = $repository->getSearchService();
+        $locationService = $repository->getLocationService();
 
         $classes = $this->container->getParameter('tutei_sitemap.classes');
         $url =  $this->container->getParameter('tutei_sitemap.base_url');
@@ -28,6 +29,7 @@ class DefaultController extends Controller {
                 new ContentTypeIdentifier($classes)
             )
         );
+
         $list = $searchService->findContent($query);
 
         $results = array();
@@ -40,7 +42,7 @@ class DefaultController extends Controller {
             $results[] = $locationService->loadLocation($locationId);
         }
 
-        return $this->render('TuteiSitemapBundle:Default:index.xml.twig', 
+        return $this->render('TuteiSitemapBundle:Default:index.xml.twig',
                 array('results' => $results, 'url'=>$url),
                 $response);
     }
